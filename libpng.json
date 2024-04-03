@@ -1,0 +1,15 @@
+{
+    "name": "libpng",
+    "description": "PNG encoder and decoder",
+    "filters":["rfpng","pngdec","encpng"],
+    "help": "This filter encodes and decodes to PNG using libpng.",
+    "support": [
+        "image"
+    ],
+    "sources":"https://bevara.ddns.net/sources/libpng.accessor",
+    "filter_source":{
+        "rfpng" : "reframe_png.c",
+        "pngdec" : "dec_png.c",
+        "encpng" : "enc_png.c"
+    }
+}
