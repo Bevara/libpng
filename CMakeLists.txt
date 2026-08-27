@@ -27,5 +27,5 @@ add_filter(libpng
         []
         GPAC_HAS_PNG
         "${PNG_INC}"
-        "-s USE_ZLIB=1 -lz"
+        "-s USE_ZLIB=1"
         "1")
