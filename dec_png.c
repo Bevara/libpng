@@ -1,11 +1,11 @@
-/* 
+/*
 **
 ** This file is part of Bevara Access Filters.
-** 
+**
 ** This file is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation.
-** 
+**
 ** This file is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-** 
+**
 ** You should have received a copy of the GNU General Public License along with this file. If not, see <https://www.gnu.org/licenses/>.
 */
 
@@ -118,8 +118,8 @@ static GF_Err pngdec_process(GF_Filter *filter)
 	if ((w != ctx->width) || (h != ctx->height)){
 		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_WIDTH, &PROP_UINT(ctx->width));
 		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_HEIGHT, &PROP_UINT(ctx->height));
-	} 
-	
+	}
+
 	if (pf != ctx->pixel_format)
 	{
 		need_conversion = GF_TRUE;
@@ -136,7 +136,7 @@ static GF_Err pngdec_process(GF_Filter *filter)
 			ctx->in_BPP = 4;
 			break;
 		}
-		
+
 		switch (pf)
 		{
 		case GF_PIXEL_GREYSCALE:
@@ -149,11 +149,11 @@ static GF_Err pngdec_process(GF_Filter *filter)
 			ctx->out_BPP = 4;
 			break;
 		}
-		
+
 		in_size = ctx->in_BPP * ctx->width * ctx->height;
 		out_size = ctx->out_BPP * ctx->width * ctx->height;
 
-	
+
 		//gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(ctx->pixel_format));
 		gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_STRIDE, &PROP_UINT(ctx->out_BPP * ctx->width));
 	}
@@ -164,7 +164,7 @@ static GF_Err pngdec_process(GF_Filter *filter)
 
 	if (need_conversion)
 	{
-		u32 *src = (u32 *)gf_malloc(in_size);
+		u8 *src = (u8 *)gf_malloc(in_size);
 		e = gf_img_png_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, src, &in_size);
 		e = convert(output, ctx->ofmt, src, ctx->pixel_format, ctx->width * ctx->height);
 		gf_free(src);
@@ -173,7 +173,7 @@ static GF_Err pngdec_process(GF_Filter *filter)
 	{
 		e = gf_img_png_dec(data, size, &ctx->width, &ctx->height, &ctx->pixel_format, output, &out_size);
 	}
-	
+
 
 	if (e)
 	{
