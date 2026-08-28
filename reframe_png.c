@@ -1,11 +1,11 @@
-/* 
+/*
 **
 ** This file is part of Bevara Access Filters.
-** 
+**
 ** This file is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation.
-** 
+**
 ** This file is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-** 
+**
 ** You should have received a copy of the GNU General Public License along with this file. If not, see <https://www.gnu.org/licenses/>.
 */
 
@@ -200,7 +200,7 @@ static GF_Err png_process(GF_Filter *filter)
 
 	e = GF_OK;
 	u32 start_offset = 0;
-	
+
 	dst_pck = gf_filter_pck_new_ref(ctx->opid, start_offset, size - start_offset, pck);
 	if (!dst_pck)
 		return GF_OUT_OF_MEM;
@@ -226,7 +226,7 @@ static const char *png_probe_data(const u8 *data, u32 size, GF_FilterProbeScore 
 		*score = GF_FPROBE_SUPPORTED;
 		return "image/png";
 	}
-	
+
 	return NULL;
 }
 static const GF_FilterCapability ReframePngCaps[] =
@@ -264,4 +264,10 @@ GF_FilterRegister ReframePngRegister = {
 const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_png_reframe_register(GF_FilterSession *session)
 {
 	return &ReframePngRegister;
+}
+
+#include "filter_register.h"
+__attribute__((constructor))
+void register_png_reframe(void) {
+    gf_filter_auto_register("png_reframe", dynCall_png_reframe_register);
 }
