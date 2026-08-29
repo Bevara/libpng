@@ -59,6 +59,15 @@ static GF_Err pngdec_configure_pid(GF_Filter *filter, GF_FilterPid *pid, Bool is
         ctx->ofmt = GF_PIXEL_RGB;
     }
 
+	/* KNOWN LIMITATION: requesting "out=rgba" (anything other than this default
+	 * RGB) currently fails with "No suitable filter to adapt caps ... to filter
+	 * writegen" during GPAC's initial filter graph resolution, which only reads
+	 * the static ImgDecCaps table below (never calls reconfigure_output until a
+	 * pid is already connected). The obvious fix - declaring GF_PROP_PID_PIXFMT
+	 * alternatives (RGB/RGBA) in ImgDecCaps - was tried and made things worse:
+	 * it broke resolution earlier in the chain ("Filter fin failed to setup"),
+	 * even for this working RGB case. Do not retry that exact approach without
+	 * first understanding why; see test-player/libpng.js for full notes. */
 	gf_filter_pid_set_property(ctx->opid, GF_PROP_PID_PIXFMT, &PROP_UINT(ctx->ofmt));
 
 	if (ctx->codecid == GF_CODECID_PNG)
