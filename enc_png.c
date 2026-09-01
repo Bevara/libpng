@@ -389,7 +389,7 @@ GF_FilterRegister PNGEncRegister = {
 
 #endif
 
-const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_pngenc_register(GF_FilterSession *session)
+const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE pngenc_register(GF_FilterSession *session)
 {
 #ifdef GPAC_HAS_PNG
 	return &PNGEncRegister;
@@ -401,5 +401,5 @@ const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_pngenc_register(GF_Filter
 #include "filter_register.h"
 __attribute__((constructor))
 void register_pngenc(void) {
-    gf_filter_auto_register("pngenc", dynCall_pngenc_register);
+    gf_filter_auto_register("pngenc", pngenc_register);
 }

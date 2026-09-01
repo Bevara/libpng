@@ -261,7 +261,7 @@ GF_FilterRegister ReframePngRegister = {
 	.process = png_process,
 	.process_event = png_process_event};
 
-const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_png_reframe_register(GF_FilterSession *session)
+const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE png_reframe_register(GF_FilterSession *session)
 {
 	return &ReframePngRegister;
 }
@@ -269,5 +269,5 @@ const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_png_reframe_register(GF_F
 #include "filter_register.h"
 __attribute__((constructor))
 void register_png_reframe(void) {
-    gf_filter_auto_register("png_reframe", dynCall_png_reframe_register);
+    gf_filter_auto_register("png_reframe", png_reframe_register);
 }

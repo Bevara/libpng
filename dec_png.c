@@ -219,7 +219,7 @@ GF_FilterRegister ImgPngRegister = {
 	.process = pngdec_process,
 };
 
-const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_pngdec_register(GF_FilterSession *session)
+const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE pngdec_register(GF_FilterSession *session)
 {
 	return &ImgPngRegister;
 }
@@ -227,5 +227,5 @@ const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_pngdec_register(GF_Filter
 #include "filter_register.h"
 __attribute__((constructor))
 void register_pngdec(void) {
-    gf_filter_auto_register("pngdec", dynCall_pngdec_register);
+    gf_filter_auto_register("pngdec", pngdec_register);
 }
