@@ -2,7 +2,7 @@
  *			GPAC - Multimedia Framework C SDK
  *
  *			Authors: Jean Le Feuvre
- *			Copyright (c) Telecom ParisTech 2018-2021
+ *			Copyright (c) Telecom ParisTech 2018-2024
  *					All rights reserved
  *
  *  This file is part of GPAC / libpng encoder filter
@@ -152,7 +152,7 @@ static void pngenc_write(png_structp png, png_bytep data, png_size_t size)
 		u32 old_size = ctx->alloc_size;
 		while (ctx->pos + size > ctx->alloc_size)
 			ctx->alloc_size += PNG_BLOCK_SIZE;
-
+		
 		if (gf_filter_pck_expand(ctx->dst_pck, ctx->alloc_size - old_size, &ctx->output, &new_data, &new_size) != GF_OK) {
 			return;
 		}
@@ -385,6 +385,7 @@ GF_FilterRegister PNGEncRegister = {
 	SETCAPS(PNGEncCaps),
 	.configure_pid = pngenc_configure_pid,
 	.process = pngenc_process,
+	.hint_class_type = GF_FS_CLASS_ENCODER
 };
 
 #endif
@@ -398,6 +399,7 @@ const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE pngenc_register(GF_FilterSession 
 #endif
 }
 
+/*Bevara: side modules register their own filters at load time.*/
 #include "filter_register.h"
 __attribute__((constructor))
 void register_pngenc(void) {
