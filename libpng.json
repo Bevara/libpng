@@ -14,5 +14,17 @@
     },
     "Format": ["PNG"],
     "licence_required":false,
-    "using": ["solver_minimal_1"]
+    "using": ["solver_minimal_1"],
+    "runtime": {
+        "pngdec": {
+            "outputs": [
+                {
+                    "property": "GF_PROP_PID_PIXFMT",
+                    "format": [
+                        "GF_PIXEL_RGB"
+                    ]
+                }
+            ]
+        }
+    }
 }
