@@ -2,7 +2,7 @@ SPDX-License-Identifier: LGPL-2.1-or-later AND libpng-2.0
 
 libpng - PNG decoder and encoder accessor
 
-This accessor is a combined work: its filter sources come from GPAC, Copyright (c) Telecom Paris, under LGPL-2.1-or-later, adapted by Bevara (Copyright (c) 2026 Bevara); it statically links libpng 1.6.50 under the PNG Reference Library License version 2.
+This accessor is a combined work: its filter sources come from GPAC, Copyright (c) Telecom Paris, under LGPL-2.1-or-later, adapted by Bevara Technologies, LLC (Copyright (c) 2026 Bevara Technologies, LLC); it statically links libpng 1.6.50 under the PNG Reference Library License version 2.
 
 The texts of these licences follow.
 
