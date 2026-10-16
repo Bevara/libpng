@@ -1,5 +1,6 @@
 {
     "name": "libpng",
+    "version": "1.0.1",
     "description": "PNG encoder and decoder",
     "filters":["rfpng","pngdec","encpng"],
     "help": "This filter encodes and decodes to PNG using libpng.",
