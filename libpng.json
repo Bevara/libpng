@@ -13,7 +13,6 @@
         "encpng" : "enc_png.c"
     },
     "Format": ["PNG"],
-    "licence_required":false,
     "using": ["solver_minimal_1"],
     "runtime": {
         "pngdec": {
@@ -26,5 +25,10 @@
                 }
             ]
         }
+    },
+    "patents": {
+        "status": "royalty-free",
+        "note": "PNG",
+        "checked": "2026-10-16"
     }
 }
