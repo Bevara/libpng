@@ -1,6 +1,6 @@
 {
     "name": "libpng",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "PNG encoder and decoder",
     "filters":["rfpng","pngdec","encpng"],
     "help": "This filter encodes and decodes to PNG using libpng.",
@@ -14,7 +14,7 @@
         "encpng" : "enc_png.c"
     },
     "Format": ["PNG"],
-    "using": ["solver_minimal_1", "solver_1"],
+    "using": ["mm_solver_minimal_1.0.1", "mm_solver_1.0.1"],
     "runtime": {
         "pngdec": {
             "outputs": [
