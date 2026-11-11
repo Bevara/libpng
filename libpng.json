@@ -2,19 +2,32 @@
     "name": "libpng",
     "version": "1.0.3",
     "description": "PNG encoder and decoder",
-    "filters":["rfpng","pngdec","encpng"],
+    "filters": [
+        "rfpng",
+        "pngdec",
+        "encpng"
+    ],
     "help": "This filter encodes and decodes to PNG using libpng.",
     "support": [
         "image"
     ],
-    "sources":"https://bevara.ddns.net/sources/libpng.accessor",
-    "filter_source":{
-        "rfpng" : "reframe_png.c",
-        "pngdec" : "dec_png.c",
-        "encpng" : "enc_png.c"
+    "sources": "https://bevara.ddns.net/sources/libpng.accessor",
+    "filter_source": {
+        "rfpng": "reframe_png.c",
+        "pngdec": "dec_png.c",
+        "encpng": "enc_png.c"
     },
-    "Format": ["PNG"],
-    "using": ["mm_solver_minimal_1.0.1", "mm_solver_1.0.1", "mm_solver_1.0.2", "mm_solver_1.0.3", "mm_solver_1.0.4"],
+    "Format": [
+        "PNG"
+    ],
+    "using": [
+        "mm_solver_minimal_1.0.1",
+        "mm_solver_1.0.1",
+        "mm_solver_1.0.2",
+        "mm_solver_1.0.3",
+        "mm_solver_1.0.4",
+        "mm_solver_1.0.5"
+    ],
     "runtime": {
         "pngdec": {
             "outputs": [
